@@ -31,7 +31,7 @@ namespace DemoParallelArraysB
             for (int i = 0; i < ids.Length; i++)
             {
                 //look for what the student entered
-                if (students[i] == txtStudent.Text || ids[i] == id)
+                if (students[i].ToLower() == txtStudent.Text.ToLower() || ids[i] == id)
                 {
                     lblGrade.Text = grades[i].ToString();
                     found = true;
