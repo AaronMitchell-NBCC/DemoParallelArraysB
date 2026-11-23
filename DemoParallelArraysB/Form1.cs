@@ -13,7 +13,7 @@ namespace DemoParallelArraysB
             lblGrade.BackColor = Color.PeachPuff;
         }
         //class-level arrays to hold student data
-        //in this demo we are to be using arrays in parallel
+        //in this demo we are going to be using arrays in parallel
         //multiple collections with indexes being linked
         int[] ids = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 13 };
         string[] students = {"Aaron", "Cathy", "Bob", "Sue", "George", "Jerry", "Elaine",
@@ -23,22 +23,28 @@ namespace DemoParallelArraysB
         //event to handle a search based on the data the user provides in the textbox
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            bool found = false; //Did we find the student info
+            bool found = false; //Did we find the student info?
+
             //blank out the label
             lblGrade.Text = "";
-            //search by name OR id
+
+            //search by name OR id through the arrays
+            //we are not capturing the result of our TryParse because we
+            //want to search regardless of its success
             int.TryParse(txtStudent.Text, out int id);
+            //We could use any of the arrays for the test condition (because they are the same length!)
             for (int i = 0; i < ids.Length; i++)
             {
-                //look for what the student entered
+                //look for what the student entered and compare it to the arrays
                 if (students[i].ToLower() == txtStudent.Text.ToLower() || ids[i] == id)
                 {
+                    //if we have a match, set the label with the grade and exit the loop
                     lblGrade.Text = grades[i].ToString();
                     found = true;
                     break;
                 }
             }
-            if (!found)
+            if (!found) //this is if we never flipped our found bool, so we had no grade to show
                 MessageBox.Show("No student matching the id or name of " + txtStudent.Text,
                     "Data not Found");
         }
