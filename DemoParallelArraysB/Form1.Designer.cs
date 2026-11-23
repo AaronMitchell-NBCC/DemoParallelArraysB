@@ -76,6 +76,7 @@
             btnSearch.TabIndex = 4;
             btnSearch.Text = "Search Grade";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // Form1
             // 
